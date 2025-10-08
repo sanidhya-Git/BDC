@@ -14,10 +14,10 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: "LifeFlow - Save Lives Through Blood Donation",
+  title: "BloodDonation - Save Lives Through Blood Donation",
   description:
     "Join our community of life-savers. Donate blood, track your impact, and help save lives in your community.",
-  generator: "v0.app",
+  generator: "",
 }
 
 export default function RootLayout({

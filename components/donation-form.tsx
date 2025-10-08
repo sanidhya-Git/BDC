@@ -27,7 +27,7 @@ export function DonationForm() {
   }
 
   return (
-    <section id="donate-form" className="py-20 bg-white">
+    <section id="donate-form" className="py-5 bg-white">
       <div className="container px-4">
         <div className="max-w-3xl mx-auto">
           <motion.div

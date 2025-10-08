@@ -7,10 +7,11 @@ import { motion } from "framer-motion"
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-white via-red-50/30 to-white min-h-[90vh] flex items-center">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="relative overflow-x-hidden overflow-y-hidden bg-gradient-to-br from-white via-red-50/30 to-white min-h-[90vh] flex items-center">
+      {/* Animated background circles */}
+      <div className="absolute inset-0 pointer-events-none">
         <motion.div
-          className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-24 left-20 w-28 h-28 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3],
@@ -22,7 +23,7 @@ export function HeroSection() {
           }}
         />
         <motion.div
-          className="absolute bottom-20 right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"
+          className="absolute bottom-24 right-20 w-36 h-36 bg-primary/5 rounded-full blur-3xl"
           animate={{
             scale: [1.2, 1, 1.2],
             opacity: [0.5, 0.3, 0.5],
@@ -35,8 +36,10 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="container px-4 py-20 relative z-10">
+      {/* Main content */}
+      <div className="container mx-auto px-4 md:px-6 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left text column */}
           <motion.div
             className="space-y-8"
             initial={{ opacity: 0, y: 30 }}
@@ -90,6 +93,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
+          {/* Right image column */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 30 }}
