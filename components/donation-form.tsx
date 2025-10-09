@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Calendar, MapPin, Phone, Mail, User, Droplet, PersonStanding , BookCopy } from "lucide-react"
+import { Calendar, MapPin, Phone, Mail, User, Droplet, PersonStanding, BookCopy } from "lucide-react"
 import { motion } from "framer-motion"
 import { BloodDropLoader } from "./blood-drop-loader"
 
@@ -59,17 +59,28 @@ export function DonationForm() {
     if (!formData.terms) errs.terms = "You must accept terms"
 
     setErrors(errs)
-
     return Object.keys(errs).length === 0
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (field: string, value: any) => {
+    setFormData({ ...formData, [field]: value })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!validate()) return
 
     setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+    try {
+      const response = await fetch("/api/donation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      const result = await response.json()
+
+      if (!response.ok) throw new Error(result.error || "Failed to submit form")
+
       setSubmitted(true)
       setFormData({
         fullName: "",
@@ -86,12 +97,14 @@ export function DonationForm() {
         message: "",
         terms: false,
       })
-      setTimeout(() => setSubmitted(false), 4000)
-    }, 2000)
-  }
 
-  const handleChange = (field: string, value: any) => {
-    setFormData({ ...formData, [field]: value })
+      setTimeout(() => setSubmitted(false), 4000)
+    } catch (error: any) {
+      console.error("Error submitting form:", error.message)
+      alert("Failed to submit form: " + error.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -279,7 +292,7 @@ export function DonationForm() {
                 </motion.div>
               </div>
 
-              {/* Message */}
+              {/* Additional Message */}
               <motion.div className="space-y-2">
                 <Label>Additional Information (Optional)</Label>
                 <Textarea
@@ -300,13 +313,12 @@ export function DonationForm() {
                   id="terms"
                 />
                 <Label htmlFor="terms" className="text-sm text-muted-foreground cursor-pointer leading-relaxed">
-                  I confirm that I am in good health, meet the eligibility criteria, and agree to the terms and
-                  conditions of blood donation
+                  I confirm that I am in good health, meet the eligibility criteria, and agree to the terms and conditions of blood donation
                 </Label>
               </div>
               {errors.terms && <p className="text-red-500 text-sm">{errors.terms}</p>}
 
-              {/* Submit */}
+              {/* Submit Button */}
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   type="submit"
