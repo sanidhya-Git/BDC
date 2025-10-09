@@ -108,7 +108,7 @@ export function DonationForm() {
   }
 
   return (
-    <section id="donate-form" className="py-5 bg-white">
+    <section id="donate-form" className="min-h-screen flex items-center justify-center bg-white from-white via-gray-50 to-white py-10">
       <div className="container px-4">
         <div className="max-w-3xl mx-auto">
           <motion.div

@@ -84,7 +84,7 @@ export function HeroSection() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button size="lg" className="text-base shadow-lg shadow-primary/20" asChild>
-                  <Link href="#donate-form">
+                  <Link href="/donateform" >
                     Donate Now
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -93,7 +93,6 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right image column */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 30 }}

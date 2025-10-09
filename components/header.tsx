@@ -44,7 +44,7 @@ export function Header() {
         <div className="hidden md:flex items-center gap-3">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button asChild className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20">
-              <Link href="#donate-form">Donate Now</Link>
+              <Link href="/donateform">Donate Now</Link>
             </Button>
           </motion.div>
         </div>
@@ -77,7 +77,7 @@ export function Header() {
               </Link>
               <div className="pt-2 border-t border-border">
                 <Button asChild className="w-full bg-primary hover:bg-primary/90">
-                  <Link href="#donate-form">Donate Now</Link>
+                  <Link href="/donateform">Donate Now</Link>
                 </Button>
               </div>
             </div>

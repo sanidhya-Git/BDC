@@ -35,12 +35,12 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <Header />
       <main>
         {/* Hero Section */}
         <section className="relative py-20 bg-gradient-to-br from-red-50 via-white to-red-50/30">
-          <div className="container px-4">
+          <div className="container mx-auto px-4">
             <motion.div
               className="max-w-4xl mx-auto text-center"
               initial={{ opacity: 0, y: 20 }}
@@ -48,9 +48,9 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                About <span className="text-primary">BDC</span>
+                About <span className="text-red-600">BDC</span>
               </h1>
-              <p className="text-lg md:text-xl text-muted-foreground text-pretty leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                 We are dedicated to saving lives through blood donation. Every drop counts, and every donor is a hero in
                 our mission to ensure no one suffers from blood shortage.
               </p>
@@ -60,8 +60,8 @@ export default function AboutPage() {
 
         {/* Stats Section */}
         <section className="py-16 bg-white">
-          <div className="container px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -76,10 +76,10 @@ export default function AboutPage() {
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <stat.icon className="h-8 w-8 text-primary" />
+                    <stat.icon className="h-8 w-8 text-red-600" />
                   </motion.div>
-                  <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground font-medium">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">{stat.value}</div>
+                  <div className="text-sm text-gray-500 font-medium">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -88,8 +88,8 @@ export default function AboutPage() {
 
         {/* Mission, Vision, Values */}
         <section className="py-20 bg-gradient-to-b from-white to-red-50/30">
-          <div className="container px-4">
-            <div className="grid md:grid-cols-3 gap-8">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {values.map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -105,10 +105,10 @@ export default function AboutPage() {
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <value.icon className="h-7 w-7 text-primary" />
+                    <value.icon className="h-7 w-7 text-red-600" />
                   </motion.div>
                   <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed text-pretty">{value.description}</p>
+                  <p className="text-gray-700 leading-relaxed">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -117,7 +117,7 @@ export default function AboutPage() {
 
         {/* Story Section */}
         <section className="py-20 bg-white">
-          <div className="container px-4">
+          <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -126,26 +126,26 @@ export default function AboutPage() {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-                  Our <span className="text-primary">Story</span>
+                  Our <span className="text-red-600">Story</span>
                 </h2>
-                <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                  <p className="text-pretty">
+                <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                  <p>
                     LifeFlow was founded in 2009 with a simple yet powerful mission: to bridge the gap between blood
                     donors and those in need. What started as a small community initiative has grown into a nationwide
                     movement, touching thousands of lives every year.
                   </p>
-                  <p className="text-pretty">
+                  <p>
                     We recognized that while many people want to donate blood, they often don't know where to go or when
                     their donation is needed most. At the same time, hospitals and patients face critical shortages.
                     LifeFlow was created to solve this problem by making blood donation accessible, convenient, and
                     rewarding.
                   </p>
-                  <p className="text-pretty">
+                  <p>
                     Today, we work with hundreds of hospitals, organize regular blood donation camps, and maintain a
                     community of dedicated donors who have collectively saved over 50,000 lives. Every donation through
                     LifeFlow is a testament to the power of human compassion and community spirit.
                   </p>
-                  <p className="text-pretty font-semibold text-foreground">
+                  <p className="font-semibold text-gray-800">
                     Join us in our mission to ensure that no life is lost due to blood shortage. Together, we can make a
                     difference, one donation at a time.
                   </p>
