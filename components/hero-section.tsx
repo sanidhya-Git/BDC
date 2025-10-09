@@ -106,7 +106,7 @@ export function HeroSection() {
               transition={{ duration: 0.3 }}
             >
               <img
-                src="/diverse-group-of-happy-blood-donors-smiling-togeth.jpg"
+                src="/hero.jpg"
                 alt="Happy blood donors"
                 className="object-cover w-full h-full"
               />

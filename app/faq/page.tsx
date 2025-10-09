@@ -1,3 +1,5 @@
+"use client"
+
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -141,153 +143,152 @@ export default function FAQPage() {
   ]
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main>
+
+      <main className="flex-1 flex flex-col items-center justify-center">
         {/* Hero Section */}
-        <section className="bg-gradient-to-br from-primary/10 via-background to-accent/10 py-16 md:py-24">
-          <div className="container px-4">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-balance">
-                Frequently Asked <span className="text-primary">Questions</span>
-              </h1>
-              <p className="text-lg md:text-xl text-muted-foreground text-pretty leading-relaxed">
-                Find answers to common questions about blood donation, eligibility, and the donation process
-              </p>
-              <div className="relative max-w-md mx-auto">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder="Search FAQs..."
-                  className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                />
-              </div>
+        <section className="w-full bg-gradient-to-br from-primary/10 via-background to-accent/10 py-20 md:py-28 text-center">
+          <div className="container px-4 mx-auto max-w-3xl space-y-6">
+            <h1 className="text-4xl md:text-5xl font-bold text-balance">
+              Frequently Asked <span className="text-primary">Questions</span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              Find answers to common questions about blood donation, eligibility, and the donation process.
+            </p>
+            <div className="relative max-w-md mx-auto">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search FAQs..."
+                className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+              />
             </div>
           </div>
         </section>
 
         {/* FAQ Categories */}
-        <section className="py-16">
-          <div className="container px-4">
-            <div className="max-w-4xl mx-auto space-y-12">
-              {faqCategories.map((category, categoryIndex) => (
-                <div key={categoryIndex}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <category.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <h2 className="text-2xl font-bold">{category.category}</h2>
+        <section className="w-full py-20 bg-background">
+          <div className="container mx-auto max-w-4xl px-4 space-y-12">
+            {faqCategories.map((category, categoryIndex) => (
+              <div key={categoryIndex} className="space-y-4">
+                <div className="flex items-center gap-3 justify-center mb-6">
+                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <category.icon className="h-5 w-5 text-primary" />
                   </div>
-
-                  <Accordion type="single" collapsible className="space-y-4">
-                    {category.questions.map((faq, faqIndex) => (
-                      <AccordionItem
-                        key={faqIndex}
-                        value={`${categoryIndex}-${faqIndex}`}
-                        className="border border-border rounded-lg px-6 bg-card"
-                      >
-                        <AccordionTrigger className="text-left hover:no-underline py-4">
-                          <span className="font-semibold text-pretty pr-4">{faq.question}</span>
-                        </AccordionTrigger>
-                        <AccordionContent className="text-muted-foreground text-pretty leading-relaxed pb-4">
-                          {faq.answer}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
+                  <h2 className="text-2xl font-bold text-center">{category.category}</h2>
                 </div>
-              ))}
-            </div>
+
+                <Accordion type="single" collapsible className="space-y-4">
+                  {category.questions.map((faq, faqIndex) => (
+                    <AccordionItem
+                      key={faqIndex}
+                      value={`${categoryIndex}-${faqIndex}`}
+                      className="border border-border rounded-lg bg-card px-6"
+                    >
+                      <AccordionTrigger className="text-left hover:no-underline py-4 font-semibold">
+                        {faq.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-muted-foreground leading-relaxed pb-4">
+                        {faq.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Still Have Questions */}
-        <section className="py-16 bg-muted/30">
-          <div className="container px-4">
-            <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
-                <p className="text-lg text-muted-foreground text-pretty">Our support team is here to help you 24/7</p>
-              </div>
+        <section className="w-full py-20 bg-muted/30 text-center">
+          <div className="container mx-auto max-w-4xl px-4">
+            <h2 className="text-3xl font-bold mb-4">Still Have Questions?</h2>
+            <p className="text-lg text-muted-foreground mb-10">
+              Our support team is here to help you 24/7
+            </p>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg mb-2">Call Us</h3>
-                        <p className="text-sm text-muted-foreground mb-3">Speak with our support team anytime</p>
-                        <div className="space-y-1 text-sm">
-                          <div>
-                            <span className="font-medium">General: </span>
-                            <a href="tel:1-800-DONATE-1" className="text-primary hover:underline">
-                              1-800-DONATE-1
-                            </a>
-                          </div>
-                          <div>
-                            <span className="font-medium">Emergency: </span>
-                            <a href="tel:1-800-URGENT-1" className="text-primary hover:underline">
-                              1-800-URGENT-1
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-6 w-6 text-accent" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg mb-2">Email Us</h3>
-                        <p className="text-sm text-muted-foreground mb-3">Get a response within 24 hours</p>
-                        <a href="mailto:info@lifeflow.org" className="text-sm text-primary hover:underline font-medium">
-                          info@lifeflow.org
+            <div className="grid md:grid-cols-2 gap-8 justify-center">
+              {/* Call Us */}
+              <Card className="shadow-md hover:shadow-lg transition-all">
+                <CardContent className="p-6 text-left flex gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Call Us</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Speak with our support team anytime
+                    </p>
+                    <div className="space-y-1 text-sm">
+                      <div>
+                        <span className="font-medium">General: </span>
+                        <a href="tel:1-800-DONATE-1" className="text-primary hover:underline">
+                          1-800-DONATE-1
                         </a>
-                        <div className="mt-4">
-                          <Button variant="outline" size="sm" asChild>
-                            <Link href="/contact">Contact Form</Link>
-                          </Button>
-                        </div>
+                      </div>
+                      <div>
+                        <span className="font-medium">Emergency: </span>
+                        <a href="tel:1-800-URGENT-1" className="text-primary hover:underline">
+                          1-800-URGENT-1
+                        </a>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Email Us */}
+              <Card className="shadow-md hover:shadow-lg transition-all">
+                <CardContent className="p-6 text-left flex gap-4">
+                  <div className="h-12 w-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <Mail className="h-6 w-6 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-lg mb-2">Email Us</h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Get a response within 24 hours
+                    </p>
+                    <a
+                      href="mailto:info@lifeflow.org"
+                      className="text-sm text-primary hover:underline font-medium"
+                    >
+                      info@lifeflow.org
+                    </a>
+                    <div className="mt-4">
+                      <Button variant="outline" size="sm" asChild>
+                        <Link href="/contact">Contact Form</Link>
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
 
         {/* Download Resources */}
-        <section className="py-16">
-          <div className="container px-4">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h2 className="text-3xl font-bold text-balance">Downloadable Resources</h2>
-              <p className="text-lg text-muted-foreground text-pretty">
-                Get detailed information guides to read at your convenience
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="outline" asChild>
-                  <Link href="/resources/donor-guide.pdf">Download Donor Guide</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/resources/eligibility-checklist.pdf">Eligibility Checklist</Link>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="/resources/preparation-tips.pdf">Preparation Tips</Link>
-                </Button>
-              </div>
+        <section className="w-full py-20 text-center">
+          <div className="container mx-auto max-w-3xl px-4 space-y-6">
+            <h2 className="text-3xl font-bold text-balance">Downloadable Resources</h2>
+            <p className="text-lg text-muted-foreground">
+              Get detailed information guides to read at your convenience
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="outline" asChild>
+                <Link href="/resources/donor-guide.pdf">Download Donor Guide</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/resources/eligibility-checklist.pdf">Eligibility Checklist</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/resources/preparation-tips.pdf">Preparation Tips</Link>
+              </Button>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   )
