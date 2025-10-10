@@ -34,7 +34,7 @@ export function Header() {
             </Link>
           </motion.div>
           <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-            <Link href="#gallery" className="text-sm font-medium hover:text-primary transition-colors relative group">
+            <Link href="/gallery" className="text-sm font-medium hover:text-primary transition-colors relative group">
               Gallery
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
             </Link>
@@ -72,7 +72,7 @@ export function Header() {
               <Link href="/about" className="text-sm font-medium hover:text-primary transition-colors">
                 About
               </Link>
-              <Link href="#gallery" className="text-sm font-medium hover:text-primary transition-colors">
+              <Link href="/gallery" className="text-sm font-medium hover:text-primary transition-colors">
                 Gallery
               </Link>
               <div className="pt-2 border-t border-border">
