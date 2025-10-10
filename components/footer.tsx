@@ -72,11 +72,6 @@ export function Footer() {
 
         <div className="pt-6 border-t border-border text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} BDC — All rights reserved. Saving lives, one donation at a time.</p>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Made with{" "}
-            <Heart className="inline h-3 w-3 text-red-500 fill-red-500 mx-1 animate-pulse" /> by{" "}
-            <span className="font-semibold text-foreground">Sanidhya Mehra</span>
-          </p>
         </div>
       </div>
     </footer>
